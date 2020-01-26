@@ -18,10 +18,11 @@ def softmax(x):
     return x_exp / np.sum(x_exp, axis=1, keepdims=True)
 
 #minstのデータ（手書きの数字の画像）をダウンロード
+#データの詳細（https://www.openml.org/d/554）
 mnist = fetch_openml(name='mnist_784')
 
 x_mnist = mnist.data.astype('float32') / 255.
-t_mnist = np.eye(N=10)[mnist.target.astype('int32')]
+t_mnist = np.eye(N=10)[mnist.target.astype('int32')]　#目的関数
 
 x_train_mnist, x_test_mnist, t_train_mnist, t_test_mnist = train_test_split(x_mnist, t_mnist, test_size=10000)
 x_train_mnist, x_valid_mnist, t_train_mnist, t_valid_mnist = train_test_split(x_train_mnist, t_train_mnist, test_size=10000)
